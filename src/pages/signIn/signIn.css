@@ -1,0 +1,297 @@
+.body {
+  font-family: Inter;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.title {
+  color: var(--secondary-watermelon-500, #41a2e2);
+  font-family: "Gluten", cursive;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+/* Continue with Google */
+.Googlebutton {
+  background: var(--Primary-White, #fff);
+  border-color: rgb(247 237 237);
+  color: rgba(0, 0, 0, 0.54);
+  width: 60%;
+  height: 50px;
+  font-family: Inter;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 800;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.17),
+    0px 0px 3px 0px rgba(199, 198, 198, 0.08);
+}
+
+.continueWithGoogle_inner {
+  width: 70%;
+  font-size: 20px;
+  display: flex;
+  margin: 0px auto;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--Primary-White, #fff);
+}
+
+.continueWithGoogle_inner img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Continue with Apple */
+.Applebutton {
+  background: var(--Primary-Black, #000);
+  border-color: rgb(247 237 237);
+  color: rgba(0, 0, 0, 0.54);
+  width: 60%;
+  height: 50px;
+  font-family: Inter;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 800;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.17),
+    0px 0px 3px 0px rgba(199, 198, 198, 0.08);
+
+  margin: 20px;
+}
+.continueWithApple_inner {
+  width: 70%;
+  font-size: 20px;
+  display: flex;
+  margin: 0px auto;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--Primary-White, #000);
+  color: #fff;
+}
+.continueWithApple_inner img {
+  width: 24px;
+  height: 24px;
+}
+
+/* or text */
+.or {
+  color: var(--secondary-watermelon-500, #41a2e2);
+  font-family: Gluten;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.form {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.outer-handler {
+  width: 90%;
+  padding: 12px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  position: relative;
+}
+.names {
+  color: var(--Primary-Gray-900, #1c1c1b);
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 115%; /*20.7px*/
+}
+.namesInput {
+  padding: 15px;
+  border-radius: 4px;
+  border: 1px solid var(--Primary-Gray-900, #1c1c1b);
+  background: var(--Primary-White, #fff);
+  width: 93%;
+  height: 18px;
+  font-size: 16px;
+
+  align-items: center;
+}
+.hide-password-icon {
+  position: absolute;
+  top: 55px;
+  right: 10%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.signInbutton {
+  background: var(--primary-egg-500, #fcce45);
+  border-color: rgb(0, 0, 0);
+  width: 70%;
+  height: 50px;
+  font-family: Inter;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 800;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.17),
+    0px 0px 3px 0px rgba(199, 198, 198, 0.08);
+  margin-top: 20px;
+  font-size: 20px;
+}
+.signInbutton:hover {
+  background: #41a2e2;
+  color: #fff;
+  border: 3px solid #41a2e2;
+}
+.signUp-text {
+  color: var(--Secondary-Watermelon-900, #120106);
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 115%;
+  /* 16.1px */
+  margin-top: 30px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.signUp-link {
+  gap: 8px;
+  color: var(--secondary-watermelon-500, #41a2e2);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 115%; /* 16.1px */
+  text-decoration: dotted;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+
+  .title {
+    font-size: 35px;
+  }
+
+  .outer-handler {
+    width: 100%;
+  }
+
+  .names {
+    font-size: 15px;
+  }
+
+  .namesInput {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .Googlebutton {
+    width: 60%;
+  }
+
+  .continueWithGoogle_inner {
+    width: 70%;
+    font-size: 20px;
+  }
+
+  .Applebutton {
+    width: 60%;
+  }
+  .continueWithApple_inner {
+    width: 70%;
+    font-size: 20px;
+  }
+
+  .hide-password-icon {
+    top: 48px;
+  }
+
+  .signInbutton {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .container {
+    width: 90%;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .outer-handler {
+    width: 100%;
+  }
+
+  .names {
+    font-size: 12px;
+  }
+
+  .namesInput {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .hide-password-icon {
+    top: 45px;
+  }
+
+  .Googlebutton {
+    width: 75%;
+  }
+
+  .continueWithGoogle_inner {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .Applebutton {
+    width: 75%;
+  }
+  .continueWithApple_inner {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .signInbutton {
+    width: 70%;
+  }
+
+  .terms {
+    padding: 0 8px;
+  }
+
+  .signIn-text {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+}

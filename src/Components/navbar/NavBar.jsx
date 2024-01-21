@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./navbar.css";
 import megaMart from "../../assets/MegaMart.svg";
 import vertor from "../../assets/Vector.svg";
-import search from "../../assets/search.svg";
+import search from "../../assets/Search.svg";
 import cart from "../../assets/Buy.svg";
 import { useSelector } from "react-redux";
 

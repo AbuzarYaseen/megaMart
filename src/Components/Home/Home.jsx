@@ -36,7 +36,7 @@ const Home = () => {
           return acc;
         }, {});
         setButtonStatus(initialButtonStatus);
-
+        
         setFilteredProducts(response.data);
       } catch (error) {
         // Handle errors

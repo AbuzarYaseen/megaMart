@@ -37,7 +37,9 @@ const Home = () => {
         }, {});
         setButtonStatus(initialButtonStatus);
         
-        setFilteredProducts(response.data);
+        // setFilteredProducts(response.data);
+        setProducts(response.data);
+
       } catch (error) {
         // Handle errors
         setLoading(false);

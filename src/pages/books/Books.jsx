@@ -25,7 +25,7 @@ const Books = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("https://freetestapi.com/api/v1/book");
+        const response = await axios.get("https://freetestapi.com/api/v1/books");
         setProducts(response.data);
         setLoading(false);
 

@@ -22,7 +22,7 @@ const NavBar = () => {
 
   const navigate = useNavigate();
   const handleClick = () => {
-    localStorage.clear("userData");
+    localStorage.removeItem("userLogin");
     navigate("/signin");
   };
 

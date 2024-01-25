@@ -62,7 +62,7 @@ const SignUp = () => {
     });
     // Store the user data in local storage
     localStorage.setItem("userData", JSON.stringify(values));
-    console.log(JSON.stringify(values));
+    // console.log(JSON.stringify(values));
     // resetForm();
   };
   const {

@@ -22,6 +22,8 @@ const signUpSchema = yup.object({
 });
 
 const SignIn = () => {
+  // React Router hook for navigation
+  const navigate = useNavigate();
   // Formik hooks for form handling
   const {
     values,
@@ -44,14 +46,19 @@ const SignIn = () => {
           values.email === storedData.email &&
           values.password === storedData.password
         ) {
+          //add signin data to new key
+          localStorage.setItem("userLogin", JSON.stringify(values));
+          console.log(JSON.stringify("login data:",values));
           toast.success("Logging in!", {
             position: "top-right",
             onClose: () => {
               navigate("/home");
             },
           });
+          
 
-          console.log("login successful", storedData);
+
+          // console.log("login successful", storedData);
         } else {
           toast.warning("Email/password not correct!", {
             position: "bottom-center",
@@ -71,8 +78,7 @@ const SignIn = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  // React Router hook for navigation
-  const navigate = useNavigate();
+  
 
   return (
     <>
@@ -142,7 +148,7 @@ const SignIn = () => {
             )}
           </div>
 
-          <button className="signInbutton" onSubmit={handleSubmit}>
+          <button className="signInbutton"  type="submit">
             SignIn
           </button>
 

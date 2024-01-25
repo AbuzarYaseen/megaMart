@@ -75,7 +75,7 @@
 .errorInputColor {
   border-radius: 4px;
   border: 1px solid var(--State-Error, #981b25);
-  background: var(--State-Error-Background, #e75662);
+  background: var(--State-Error-Background, #fcd3d6);
 }
 
 .errorMessages {

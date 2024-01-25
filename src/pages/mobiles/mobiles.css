@@ -49,7 +49,7 @@
   
   .cart-image-mobiles{
     position: absolute;
-    top: 30%;
+    top: 55%;
     left: 25%;
     transform: translate(-50%, -50%);
     width: 20px;
@@ -106,8 +106,11 @@
   }
   
   @media only screen and (max-width:425px){
-    .product-card{
+    .product-card-mobiles{
       width: 100%;
+    }
+    .card-body-mobiles{
+      height: 91%;
     }
     .card-img-mobiles{
       width: 60% !important;

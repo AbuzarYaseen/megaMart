@@ -1,15 +1,15 @@
 .body {
     margin: 0;
     padding: 0;
-  }
+}
   
-  .product-list-gadets {
+.product-list-gadets {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
     justify-content: center;
     margin: 0 5%;
-  }
+}
   
   .product-card-gadets {
     position: relative;
@@ -106,7 +106,7 @@
   }
   
   @media only screen and (max-width:425px){
-    .product-card{
+    .product-card-gadets{
       width: 100%;
     }
     .card-img-gadets{

@@ -4,8 +4,10 @@ import megaMart from "../../assets/MegaMart.svg";
 import vertor from "../../assets/Vector.svg";
 import search from "../../assets/Search.svg";
 import cart from "../../assets/Buy.svg";
+import logout from "../../assets/logout.svg";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -16,6 +18,12 @@ const NavBar = () => {
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
+  };
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    localStorage.clear("userData");
+    navigate("/signin");
   };
 
   return (
@@ -83,6 +91,7 @@ const NavBar = () => {
           <span className="cart-text">Cart</span>
           <span className="cart-count cart-count-number">{cartCount}</span>
         </div>
+        <img className="logout-icon" src={logout} onClick={handleClick} />
       </div>
     </>
   );

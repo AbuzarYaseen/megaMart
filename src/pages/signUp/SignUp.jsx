@@ -13,13 +13,13 @@ const signUpSchema = yup.object({
   firstName: yup
     .string()
     .required(
-      "Hold on! First name can not include anything extra like numbers or special characters."
+      "Hold on! First name required."
     )
     .matches(/^[A-Za-z]/, "Hold on! First name can only include letters."),
   lastName: yup
     .string()
     .required(
-      "Hold on! Last name can not include anything extra like numbers or special characters."
+      "Hold on! Last name required"
     )
     .matches(/^[A-Za-z]/, "Hold on! Last name can only include letters."),
   email: yup

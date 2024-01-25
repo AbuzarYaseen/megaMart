@@ -32,7 +32,7 @@ const signUpSchema = yup.object({
     .string()
     .min(5)
     .required(
-      "Password must include at least one alphabet, one number, and one special character"
+      "Password is empty"
     )
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,

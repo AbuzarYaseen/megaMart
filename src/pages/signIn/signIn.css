@@ -142,6 +142,11 @@
   transform: translateY(-50%);
   cursor: pointer;
 }
+.errorInputColor {
+  border-radius: 4px;
+  border: 1px solid var(--State-Error, #981b25);
+  background: var(--State-Error-Background, #fcd3d6);
+}
 .signInbutton {
   background: var(--primary-egg-500, #fcce45);
   border-color: rgb(0, 0, 0);

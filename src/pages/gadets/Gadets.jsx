@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
+import NavBar from "../../Components/navbar/NavBar";
 import axios from "axios";
-import NavBar from "../navbar/NavBar";
-import "./home.css";
-import cart from "../../assets/Buy.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { incrementItem, addProduct } from "../../src/slices/cartSlice";
 import Headroom from "react-headroom";
+import { useDispatch } from "react-redux";
+import { incrementItem } from "../../src/slices/cartSlice";
+import cart from "../../assets/Buy.svg";
+import "./gadets.css";
 
-const Home = () => {
-  // State for storing product data
+const Gadets = () => {
   const [products, setProducts] = useState([]);
   // State for managing the button status for each product
   const [buttonStatus, setButtonStatus] = useState({});
@@ -20,32 +19,27 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Function to fetch data from the API
     const fetchData = async () => {
       try {
-        // Start loading
         setLoading(true);
-        // Fetch data from the API
-        const response = await axios.get("https://fakestoreapi.com/products");
-        // Set the fetched data in the state
+        const response = await axios.get(
+          "https://freetestapi.com/api/v1/products"
+        );
         setProducts(response.data);
         setLoading(false);
+
+        // console.log("Api data:", response);
         // Initialize button status for each product
         const initialButtonStatus = response.data.reduce((acc, product) => {
           acc[product.id] = "Add to Cart";
           return acc;
         }, {});
         setButtonStatus(initialButtonStatus);
-
-        setProducts(response.data);
       } catch (error) {
-        // Handle errors
         setLoading(false);
-        console.error("Error fetching data:", error.message);
+        console.error("Error occurred:", error);
       }
     };
-
-    // Call the fetch data function when the component mounts
     fetchData();
   }, []);
 
@@ -74,49 +68,51 @@ const Home = () => {
         <NavBar />
       </Headroom>
       <div style={{ backgroundColor: "#E1E1E1" }}>
-        <h2 style={{ marginLeft: "5%" }}>Products</h2>
+        <h2 style={{ marginLeft: "5%" }}>Gadets</h2>
         {/* Loading spinner displayed when data is being fetched */}
         {isLoading && (
-          <div className="loading-container">
+          <div className="loading-container-gadets">
             <div className="spinner-border  " role="status"></div>
           </div>
         )}
         {/* Product list */}
-        <div className="product-list">
+        <div className="product-list-gadets">
           {products.map((product) => (
             <div
               key={product.id}
-              className="product-card"
+              className="product-card-gadets"
               onMouseEnter={() => handleHover(product.id)}
               onMouseLeave={handleMouseLeave}
             >
               {/* Product image */}
               <img
                 src={product.image}
-                className="card-img"
-                alt={product.title}
+                className="card-img-gadets"
+                alt={product.name}
               />
               {hoveredProductId === product.id && (
                 <>
                   {/* Add to Cart button */}
                   <button
-                    className="cart-button"
+                    className="cart-button-gadets"
                     onClick={() => handleButtonClick(product.id)}
                   >
                     {buttonStatus[product.id]}
                   </button>
                   {/* Display cart image when the button is "View Cart" */}
                   {buttonStatus[product.id] === "Edit Cart" && (
-                    <img src={cart} alt="Cart" className="cart-image" />
+                    <img src={cart} alt="Cart" className="cart-image-gadets" />
                   )}
                 </>
               )}
 
               {/* Product details */}
-              <div className="card-body">
-                <p>{product.title}</p>
+              <div className="card-body-gadets">
+                <p>{product.name}</p>
+                <p>{"Brand: " + product.brand}</p>
                 <p style={{ fontWeight: "700" }}>{"$ " + product.price}</p>
-                <p>{"Rating: " + product.rating.rate}</p>
+                <p>{"Color: " + product.color}</p>
+                <p>{"Rating: " + product.rating}</p>
               </div>
             </div>
           ))}
@@ -126,4 +122,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Gadets;

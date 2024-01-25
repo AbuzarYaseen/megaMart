@@ -1,0 +1,119 @@
+.body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .product-list-mobiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    justify-content: center;
+    margin: 0 5%;
+  }
+  
+  .product-card-mobiles {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    width: 85%;
+    height: 100%;
+    background-color: #f5f5f5;
+    overflow: hidden;
+  }
+  .card-img-mobiles {
+    width: 88%;
+    height: 53.9%;
+    mix-blend-mode: darken;
+  }
+  
+  .cart-button-mobiles {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 13px;
+  
+    width: 70%;
+  }
+  .cart-button-mobiles:hover {
+    background-color: rgb(231, 156, 16);
+  }
+  .cart-button-mobiles.clicked {
+    background-color: orange;
+  }
+  
+  .cart-image-mobiles{
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+  }
+  
+  .card-body-mobiles {
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 18px;
+    text-align: justify;
+    background-color: white;
+    height: 86%;
+    width: 120.5%;
+    margin-left: -10.5%;
+    padding: 0 10% !important;
+  }
+  
+  
+  .headroom {
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  
+  .headroom--unfixed {
+    position: relative;
+    transform: translateY(0);
+  }
+  
+  .headroom--scrolled {
+    transition: transform 200ms ease-in-out;
+  }
+  
+  .headroom--unpinned {
+    position: fixed;
+    transform: translateY(-100%);
+  }
+  
+  .headroom--pinned {
+    position: fixed;
+    transform: translateY(0%);
+  }
+  
+  .loading-container-mobiles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #008ecc;
+  }
+  
+  @media only screen and (max-width:425px){
+    .product-card{
+      width: 100%;
+    }
+    .card-img-mobiles{
+      width: 60% !important;
+    } 
+    .card-body-mobiles{
+      padding: 0 15% !important;
+    }
+    
+  }

@@ -10,9 +10,9 @@ const Protected = ({ Component }) => {
     }
   }, []);
   return (
-    <div>
+    <>
       <Component />
-    </div>
+    </>
   );
 };
 

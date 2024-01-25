@@ -8,6 +8,11 @@ import Home from "./Components/Home/Home";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Protected from "./pages/protectedRoutes/Protected";
+import Gadets from "./pages/gadets/Gadets";
+import Books from "./pages/books/Books";
+import Mobiles from "./pages/mobiles/Mobiles";
+import Toys from "./pages/toys/Toys";
+import Deals from "./pages/deals/Deals";
 
 const App = () => {
   return (
@@ -19,6 +24,11 @@ const App = () => {
           <Route path="signup" element={<SignUp />} />
           
           <Route path="home" element={<Protected Component = {Home}/>}/>
+          <Route path="gadets" element={<Gadets/>}/>
+          <Route path="books" element={<Books/>}/>
+          <Route path="mobiles" element={<Mobiles/>}/>
+          <Route path="toys" element={<Toys/>}/>
+          <Route path="deals" element={<Deals/>}/>
         </Routes>
       </Router>
       <ToastContainer />

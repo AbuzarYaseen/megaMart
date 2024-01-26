@@ -47,7 +47,7 @@ const SignIn = () => {
           values.password === storedData.password
         ) {
           //add signin data to new key
-          localStorage.setItem("userLogin", JSON.stringify(values));
+          sessionStorage.setItem("userLogin", JSON.stringify(values));
           console.log(JSON.stringify("login data:",values));
           toast.success("Logging in!", {
             position: "top-right",

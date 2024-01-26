@@ -16,6 +16,10 @@ const Home = () => {
   const [hoveredProductId, setHoveredProductId] = useState(null);
   // State for managing loading state
   const [isLoading, setLoading] = useState(false);
+  // State for search term
+  const [searchTerm, setSearchTerm] = useState("");
+  // State for filtered products
+  const [filteredProducts, setFilteredProducts] = useState([]);  
 
   const dispatch = useDispatch();
 
@@ -30,6 +34,8 @@ const Home = () => {
         // Set the fetched data in the state
         setProducts(response.data);
         setLoading(false);
+        console.log("Api data:", response);
+
         // Initialize button status for each product
         const initialButtonStatus = response.data.reduce((acc, product) => {
           acc[product.id] = "Add to Cart";
@@ -48,6 +54,17 @@ const Home = () => {
     // Call the fetch data function when the component mounts
     fetchData();
   }, []);
+
+  useEffect(() => {
+    // Filter products based on the search term
+    setFilteredProducts(
+      products.filter(
+        (product) =>
+          product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.category.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [searchTerm, products]);
 
   // Function to handle product hover
   const handleHover = (productId) => {
@@ -68,10 +85,15 @@ const Home = () => {
     dispatch(incrementItem());
   };
 
+  // Function to handle search input change
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
     <>
       <Headroom>
-        <NavBar />
+        <NavBar handleSearchChange={handleSearchChange}/>
       </Headroom>
       <div style={{ backgroundColor: "#E1E1E1" }}>
         <h2 style={{ marginLeft: "5%" }}>Products</h2>
@@ -83,43 +105,85 @@ const Home = () => {
         )}
         {/* Product list */}
         <div className="product-list">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="product-card"
-              onMouseEnter={() => handleHover(product.id)}
-              onMouseLeave={handleMouseLeave}
-            >
-              {/* Product image */}
-              <img
-                src={product.image}
-                className="card-img"
-                alt={product.title}
-              />
-              {hoveredProductId === product.id && (
-                <>
-                  {/* Add to Cart button */}
-                  <button
-                    className="cart-button"
-                    onClick={() => handleButtonClick(product.id)}
-                  >
-                    {buttonStatus[product.id]}
-                  </button>
-                  {/* Display cart image when the button is "View Cart" */}
-                  {buttonStatus[product.id] === "Edit Cart" && (
-                    <img src={cart} alt="Cart" className="cart-image" />
-                  )}
-                </>
-              )}
 
-              {/* Product details */}
-              <div className="card-body">
-                <p>{product.title}</p>
-                <p style={{ fontWeight: "700" }}>{"$ " + product.price}</p>
-                <p>{"Rating: " + product.rating.rate}</p>
+         {searchTerm !== ""
+              ? filteredProducts.map((product) => (
+                <div
+                key={product.id}
+                className="product-card-books"
+                onMouseEnter={() => handleHover(product.id)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <img
+                  src={product.image}
+                  className="card-img-books"
+                  alt={"Image not available in fake API"}
+                />
+                {hoveredProductId === product.id && (
+                  <>
+                    <button
+                      className="cart-button-books"
+                      onClick={() => handleButtonClick(product.id)}
+                    >
+                      {buttonStatus[product.id]}
+                    </button>
+                    {buttonStatus[product.id] === "Edit Cart" && (
+                      <img
+                        src={cart}
+                        alt="Cart"
+                        className="cart-image-books"
+                      />
+                    )}
+                  </>
+                )}
+                {/* Product details */}
+                <div className="card-body-books">
+                  <p>{product.title}</p>
+                  <p>{"Category: " + product.category}</p>
+                  <p style={{ fontWeight: "700" }}>{"$ " + product.price}</p>
+                  <p>{"Rating: " + product.rating.rate}</p>
+                </div>
               </div>
-            </div>
-          ))}
+                ))
+              : // Otherwise, display all products
+                products.map((product) => (
+                  <div
+                    key={product.id}
+                    className="product-card-books"
+                    onMouseEnter={() => handleHover(product.id)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <img
+                      src={product.image}
+                      className="card-img-books"
+                      alt={"Image not available in fake API"}
+                    />
+                    {hoveredProductId === product.id && (
+                      <>
+                        <button
+                          className="cart-button-books"
+                          onClick={() => handleButtonClick(product.id)}
+                        >
+                          {buttonStatus[product.id]}
+                        </button>
+                        {buttonStatus[product.id] === "Edit Cart" && (
+                          <img
+                            src={cart}
+                            alt="Cart"
+                            className="cart-image-books"
+                          />
+                        )}
+                      </>
+                    )}
+                    {/* Product details */}
+                    <div className="card-body-books">
+                      <p>{product.title}</p>
+                      <p>{"Category:" + product.category}</p>
+                      <p style={{ fontWeight: "700" }}>{"$ " + product.price}</p>
+                      <p>{"Rating: " + product.rating.rate}</p>
+                    </div>
+                  </div>
+                ))}
         </div>
       </div>
     </>

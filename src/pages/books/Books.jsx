@@ -18,6 +18,10 @@ const Books = () => {
   const [isLoading, setLoading] = useState(false);
   // State for displaying error
   const [error, setError] = useState(null);
+  // State for search term
+  const [searchTerm, setSearchTerm] = useState("");
+  // State for filtered products
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -25,8 +29,11 @@ const Books = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("https://freetestapi.com/api/v1/books");
+        const response = await axios.get(
+          "https://freetestapi.com/api/v1/books"
+        );
         setProducts(response.data);
+        console.log(response);
         setLoading(false);
 
         // console.log("Api data:", response);
@@ -44,6 +51,17 @@ const Books = () => {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    // Filter products based on the search term
+    setFilteredProducts(
+      products.filter(
+        (product) =>
+          product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.author.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [searchTerm, products]);
 
   // Function to handle product hover
   const handleHover = (productId) => {
@@ -64,10 +82,15 @@ const Books = () => {
     dispatch(incrementItem());
   };
 
+  // Function to handle search input change
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
     <>
       <Headroom>
-        <NavBar />
+        <NavBar handleSearchChange = {handleSearchChange} />
       </Headroom>
       <div style={{ backgroundColor: "#E1E1E1", height: "100%" }}>
         <h2 style={{ marginLeft: "5%" }}>Books</h2>
@@ -79,46 +102,86 @@ const Books = () => {
         )}
         {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
         {products.length > 0 && (
-          //   Product list
+          // Product list
           <div className="product-list-books">
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className="product-card-books"
-                onMouseEnter={() => handleHover(product.id)}
-                onMouseLeave={handleMouseLeave}
-              >
-                {/* Product image */}
-                <img
-                  src={product.cover_image}
-                  className="card-img-books"
-                  alt={product.title}
-                />
-                {hoveredProductId === product.id && (
-                  <>
-                    {/* Add to Cart button */}
-                    <button
-                      className="cart-button-books"
-                      onClick={() => handleButtonClick(product.id)}
-                    >
-                      {buttonStatus[product.id]}
-                    </button>
-                    {/* Display cart image when the button is "View Cart"  */}
-                    {buttonStatus[product.id] === "Edit Cart" && (
-                      <img src={cart} alt="Cart" className="cart-image-books" />
+            {searchTerm !== ""
+              ? filteredProducts.map((product) => (
+                  <div
+                    key={product.id}
+                    className="product-card-books"
+                    onMouseEnter={() => handleHover(product.id)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <img
+                      src={product.cover_image}
+                      className="card-img-books"
+                      alt={"Image not available in fake API"}
+                    />
+                    {hoveredProductId === product.id && (
+                      <>
+                        <button
+                          className="cart-button-books"
+                          onClick={() => handleButtonClick(product.id)}
+                        >
+                          {buttonStatus[product.id]}
+                        </button>
+                        {buttonStatus[product.id] === "Edit Cart" && (
+                          <img
+                            src={cart}
+                            alt="Cart"
+                            className="cart-image-books"
+                          />
+                        )}
+                      </>
                     )}
-                  </>
-                )}
-
-                {/* Product details */}
-                <div className="card-body-books">
-                  <p>{"Title: " + product.title}</p>
-                  <p>{"Author: " + product.author}</p>
-                  <p>{"Description: " + product.description}</p>
-                  <p>{"Year: " + product.publication_year}</p>
-                </div>
-              </div>
-            ))}
+                    {/* Product details */}
+                    <div className="card-body-books">
+                      <p>{"Title: " + product.title}</p>
+                      <p>{"Author: " + product.author}</p>
+                      <p>{"Description: " + product.description}</p>
+                      <p>{"Year: " + product.publication_year}</p>
+                    </div>
+                  </div>
+                ))
+              : // Otherwise, display all products
+                products.map((product) => (
+                  <div
+                    key={product.id}
+                    className="product-card-books"
+                    onMouseEnter={() => handleHover(product.id)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <img
+                      src={product.cover_image}
+                      className="card-img-books"
+                      alt={"Image not available in fake API"}
+                    />
+                    {hoveredProductId === product.id && (
+                      <>
+                        <button
+                          className="cart-button-books"
+                          onClick={() => handleButtonClick(product.id)}
+                        >
+                          {buttonStatus[product.id]}
+                        </button>
+                        {buttonStatus[product.id] === "Edit Cart" && (
+                          <img
+                            src={cart}
+                            alt="Cart"
+                            className="cart-image-books"
+                          />
+                        )}
+                      </>
+                    )}
+                    {/* Product details */}
+                    <div className="card-body-books">
+                      <p>{"Title: " + product.title}</p>
+                      <p>{"Author: " + product.author}</p>
+                      <p>{"Description: " + product.description}</p>
+                      <p>{"Year: " + product.publication_year}</p>
+                    </div>
+                  </div>
+                ))}
           </div>
         )}
       </div>

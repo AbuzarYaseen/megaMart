@@ -9,8 +9,10 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({handleSearchChange}) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [searchTerm, setSearchTerm] = useState(""); // State for search term
+
 
   const cartCount = useSelector((state) => {
     return state.cart.count;
@@ -25,6 +27,14 @@ const NavBar = () => {
     sessionStorage.removeItem("userLogin");
     navigate("/signin");
   };
+
+  // const handleSearchIconClick = () => {
+  //   // Trigger search functionality only when text is written
+  //   if (searchTerm.trim() !== "") {
+  //     handleSearchChange(searchTerm);
+  //   }
+  // };
+
 
   return (
     <>
@@ -82,8 +92,13 @@ const NavBar = () => {
               </div>
             )}
           </div>
-          <input className="search-input" placeholder="Search here..." />
-          <img className="search-icon" src={search} />
+          <input className="search-input" placeholder="Search here..." 
+           //onChange={(e)=>setSearchTerm(e.target.value)}
+           onChange={handleSearchChange} 
+          />
+          <img className="search-icon" src={search} 
+          //onClick={handleSearchIconClick}
+          />
         </div>
 
         <div className="cart-container">

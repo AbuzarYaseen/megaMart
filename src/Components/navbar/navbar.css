@@ -117,10 +117,13 @@
   line-height: 18px;
   background-color: rgba(0, 0, 0, 0);
   border: none;
+  width: 50%;
+  height: inherit;
 }
 .search-icon {
   width: 18px;
   height: 18px;
+  cursor: pointer;
 }
 
 /* cart-container */

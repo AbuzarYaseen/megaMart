@@ -34,7 +34,7 @@ const Home = () => {
         // Set the fetched data in the state
         setProducts(response.data);
         setLoading(false);
-        console.log("Api data:", response);
+        // console.log("Api data:", response);
 
         // Initialize button status for each product
         const initialButtonStatus = response.data.reduce((acc, product) => {
@@ -117,7 +117,7 @@ const Home = () => {
                 <img
                   src={product.image}
                   className="card-img-books"
-                  alt={"Image not available in fake API"}
+                  alt={"Image loading error"}
                 />
                 {hoveredProductId === product.id && (
                   <>

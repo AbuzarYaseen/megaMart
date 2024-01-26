@@ -109,7 +109,7 @@ const Gadets = () => {
                   <img
                     src={product.image}
                     className="card-img-gadets"
-                    alt={"Image not available in fake API"}
+                    alt={"Image loading error."}
                   />
                   {hoveredProductId === product.id && (
                     <>

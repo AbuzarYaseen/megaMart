@@ -115,7 +115,7 @@ const Books = () => {
                     <img
                       src={product.cover_image}
                       className="card-img-books"
-                      alt={"Image not available in fake API"}
+                      alt={"Image not loaded"}
                     />
                     {hoveredProductId === product.id && (
                       <>

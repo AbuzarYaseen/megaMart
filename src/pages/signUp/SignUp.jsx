@@ -13,26 +13,26 @@ const signUpSchema = yup.object({
   firstName: yup
     .string()
     .required(
-      "Hold on! First name required."
+      "First name required."
     )
-    .matches(/^[A-Za-z]/, "Hold on! First name can only include letters."),
+    .matches(/^[A-Za-z]/, "First name can only include letters."),
   lastName: yup
     .string()
     .required(
-      "Hold on! Last name required"
+      "Last name required"
     )
-    .matches(/^[A-Za-z]/, "Hold on! Last name can only include letters."),
+    .matches(/^[A-Za-z]/, "Last name can only include letters."),
   email: yup
     .string()
     .email()
     .required(
-      "Hold on! Something may be missing. It should look something like this “johndoe@gmail.com”"
+      "Email required."
     ),
   password: yup
     .string()
     .min(5)
     .required(
-      "Password is empty"
+      "Password required."
     )
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
@@ -40,8 +40,8 @@ const signUpSchema = yup.object({
     ),
   confirmPassword: yup
     .string()
-    .required("Confirm password is empty")
-    .oneOf([yup.ref("password")], "Password not matched"),
+    .required("Confirm password required.")
+    .oneOf([yup.ref("password")], "Password not matched."),
 });
 
 const SignUp = () => {

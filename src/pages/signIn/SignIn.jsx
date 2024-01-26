@@ -16,7 +16,7 @@ const signUpSchema = yup.object({
     .string()
     .email()
     .required(
-      "Hold on! Something may be missing. It should look something like this “johndoe@gmail.com”"
+      "Hold on! Email required."
     ),
   password: yup.string().min(5).required("Password not correct."),
 });

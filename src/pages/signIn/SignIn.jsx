@@ -16,9 +16,9 @@ const signUpSchema = yup.object({
     .string()
     .email()
     .required(
-      "Hold on! Email required."
+      "Email required."
     ),
-  password: yup.string().min(5).required("Password not correct."),
+  password: yup.string().min(5).required("Password required."),
 });
 
 const SignIn = () => {

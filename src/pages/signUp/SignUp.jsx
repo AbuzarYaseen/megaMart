@@ -209,8 +209,8 @@ const SignUp = () => {
 
         <div className="terms">
           <span>
-            By signing up, you are creating a Noshly account and agree to
-            Noshly’s
+            By signing up, you are agree to
+            MegaMart’s
             <a href="" className="terms-privacy-signin-link">
               Terms{" "}
             </a>
